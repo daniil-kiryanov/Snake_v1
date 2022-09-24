@@ -24,11 +24,11 @@
 
         public Queue<Pixel> Body { get; } = new Queue<Pixel>();
 
-        public void Move(Direction direction)
+        public void Move(Direction direction, bool eat = false)
         {
             Clear();
             Body.Enqueue(new Pixel(Head.X, Head.Y, bodyColor));
-            Body.Dequeue();
+            if (!eat) Body.Dequeue();//if eat = true, not deqeue
             Head = direction switch
             {
                 Direction.Right => new Pixel(Head.X + 1, Head.Y, headColor),
