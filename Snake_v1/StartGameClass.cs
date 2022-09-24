@@ -4,20 +4,14 @@ using static System.Console;
 
 namespace Snake_v1
 {
-    public class StartGameClass
+    public class StartGameClass : DrawBorderClass
     {
-        public const int MapWidth = 30;
-        public const int MapHeight = 20;
         public const int ScreenWidth = MapWidth * 3;
         public const int ScreenHeight = MapHeight * 3;
-
-        private const ConsoleColor BorderColor = ConsoleColor.Gray;
         private const ConsoleColor HeadColor = ConsoleColor.Red;
         private const ConsoleColor BodyColor = ConsoleColor.Green;
-        private const ConsoleColor FoodColor = ConsoleColor.Blue;
-
+        
         private const int FrameMs = 200;
-        private static readonly Random random = new Random();
 
         public static void StartGame()
         {
@@ -66,19 +60,6 @@ namespace Snake_v1
             SetCursorPosition(ScreenWidth / 4, ScreenHeight / 2);
             WriteLine($"Game Over! Your score: {score}. Press ENTER to start a new game...");
         }
-        static void DrawBorder()
-        {
-            for (int i = 0; i < MapWidth; i++) //horizontal border
-            {
-                new Pixel(i, 0, BorderColor).Draw();
-                new Pixel(i, MapHeight - 1, BorderColor).Draw();
-            }
-            for (int i = 0; i < MapHeight; i++) //vertical border
-            {
-                new Pixel(0, i, BorderColor).Draw();
-                new Pixel(MapWidth - 1, i, BorderColor).Draw();
-            }
-        }
 
         static Direction ReadMovement(Direction currentDirection)
         {
@@ -94,16 +75,6 @@ namespace Snake_v1
                 _ => currentDirection
             };
             return currentDirection;
-        }
-        public static Pixel GenFood(Snake snake)
-        {
-            Pixel food;
-            do
-            {
-                food = new Pixel(random.Next(1, MapWidth - 2), random.Next(1, MapHeight - 2), FoodColor);
-            } while (snake.Head.X == food.X && snake.Head.Y == food.Y
-                    || snake.Body.Any(b => b.X == food.X && b.Y == food.Y));
-            return food;
         }
     }
 }
