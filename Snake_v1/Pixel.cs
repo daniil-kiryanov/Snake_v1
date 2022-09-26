@@ -2,7 +2,9 @@
 {
     public readonly struct Pixel
     {
+
         private const char PixelChar = '█';
+        
         public Pixel(int x, int y, ConsoleColor color, int pixelSize = 3)
         {
             X = x;
