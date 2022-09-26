@@ -4,7 +4,7 @@
     {
         private readonly ConsoleColor headColor;
         private readonly ConsoleColor bodyColor;
-
+        public Queue<Pixel> Body { get; } = new Queue<Pixel>();
         public Pixel Head { get; private set; }
 
         public Snake(int initialX, int initialY, ConsoleColor headColor, ConsoleColor bodyColor, int bodyLenght = 3)
@@ -21,8 +21,7 @@
             Draw();
 
         }
-
-        public Queue<Pixel> Body { get; } = new Queue<Pixel>();
+              
 
         public void Move(Direction direction, bool eat = false)
         {
