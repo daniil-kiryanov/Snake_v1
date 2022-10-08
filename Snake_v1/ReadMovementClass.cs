@@ -7,7 +7,7 @@ namespace Snake_v1
 
         public static Direction ReadMovement(Direction currentDirection)
         {
-            if (!KeyAvailable)
+            if (!KeyAvailable) //true if a key press is available; otherwise, false
                 return currentDirection;
             ConsoleKey key = ReadKey(true).Key;
             currentDirection = key switch

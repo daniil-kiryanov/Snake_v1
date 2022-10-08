@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using static System.Console;
-
 
 namespace Snake_v1
 {
@@ -10,15 +8,15 @@ namespace Snake_v1
         public const int ScreenHeight = MapHeight * 3;
         private const ConsoleColor HeadColor = ConsoleColor.Red;
         private const ConsoleColor BodyColor = ConsoleColor.Green;
-        
+
         private const int FrameMs = 200;
 
         public static void StartGame()
         {
-            Clear();
-            DrawBorder();
-            Direction currentMovement = Direction.Right;
-            var snake = new Snake(10, 5, HeadColor, BodyColor);
+            Console.Clear();//чистим консоль
+            DrawBorder();//рисуем борты
+            Direction currentMovement = Direction.Right;//задаем начальное движение
+            var snake = new Snake(10, 5, HeadColor, BodyColor);//set location snake with color
             Pixel food = GenFood(snake);
             food.Draw();
             int score = 0;
@@ -57,8 +55,8 @@ namespace Snake_v1
                     break;
             }
             snake.Clear();
-            SetCursorPosition(ScreenWidth / 4, ScreenHeight / 2);
-            WriteLine($"Game Over! Your score: {score}. Press ENTER to start a new game...");
+            Console.SetCursorPosition(ScreenWidth / 4, ScreenHeight / 2);
+            Console.WriteLine($"Game Over! Your score: {score}. Press ENTER to start a new game...");
         }
     }
 }

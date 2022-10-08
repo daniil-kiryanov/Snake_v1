@@ -21,7 +21,7 @@
             Draw();
 
         }
-              
+
 
         public void Move(Direction direction, bool eat = false)
         {
