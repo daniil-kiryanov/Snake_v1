@@ -1,6 +1,6 @@
 ﻿namespace Snake_v1
 {
-    public class GenFoodClass : ReadMovementClass
+    public class GenFoodClass //: ReadMovementClass
     {
         private const ConsoleColor FoodColor = ConsoleColor.Blue;
         private static readonly Random random = new Random();

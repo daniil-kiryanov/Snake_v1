@@ -1,17 +1,18 @@
 ﻿using static System.Console;
 
 namespace Snake_v1;
-class Program : StartGameClass
+class Program
 {
     static void Main()
     {
-        SetWindowSize(ScreenWidth, ScreenHeight);
-        SetBufferSize(ScreenWidth, ScreenHeight);
+        SetWindowSize(StartGameClass.ScreenWidth, StartGameClass.ScreenHeight);
+        //SetWindowSize(ScreenWidth, ScreenHeight);
+        SetBufferSize(StartGameClass.ScreenWidth, StartGameClass.ScreenHeight);
+        //SetBufferSize(ScreenWidth, ScreenHeight);
         CursorVisible = false;
-
         while (true)
         {
-            StartGame();
+            StartGameClass.StartGame();
             ReadKey();
         }
     }
