@@ -1,13 +1,13 @@
 ﻿namespace Snake_v1
 {
-    public class DrawBorderClass //: GenFoodClass
+    public class DrawBorderClass 
     {
         public const int MapWidth = 25;
         public const int MapHeight = 25;
 
         private const ConsoleColor BorderColor = ConsoleColor.Gray;
 
-        public void DrawBorder()
+        public static void DrawBorder()
         {
             
             for (int i = 0; i < MapWidth; i++) //horizontal border

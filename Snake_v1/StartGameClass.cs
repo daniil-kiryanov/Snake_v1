@@ -2,48 +2,48 @@
 
 namespace Snake_v1
 {
-    public class StartGameClass //: DrawBorderClass
+    public class StartGameClass
     {
         public const int ScreenWidth = DrawBorderClass.MapWidth * 3;
         public const int ScreenHeight = DrawBorderClass.MapHeight * 3;
         private const ConsoleColor HeadColor = ConsoleColor.Red;
         private const ConsoleColor BodyColor = ConsoleColor.Green;
 
-        private const int FrameMs = 200;
+        private const int FrameMs = 200;//перерыв между кадрами
 
         public static void StartGame()
         {
-            DrawBorderClass drawBorderClass = new DrawBorderClass();
+            //DrawBorderClass drawBorderClass = new DrawBorderClass();
             //GenFoodClass genFoodClass = new GenFoodClass();
             Console.Clear();//чистим консоль
-            drawBorderClass.DrawBorder();
+            DrawBorderClass.DrawBorder();
             //DrawBorder();//рисуем борты
-            Direction currentMovement = Direction.Right;//задаем начальное движение
+            Direction currentMovement = Direction.Right;//задаем начальное движение вправо
             var snake = new Snake(10, 5, HeadColor, BodyColor);//set location snake with color
-            Pixel food = GenFoodClass.GenFood(snake);
+            Pixel food = GenFoodClass.GenFood(snake);//за
             food.Draw();
             int score = 0;
-            Stopwatch sw = new Stopwatch();
+            Stopwatch sw = new Stopwatch();//класс секундомер
             while (true)
             {
                 sw.Restart();
-                Direction oldMovement = currentMovement;
-                while (sw.ElapsedMilliseconds <= FrameMs)
+                Direction oldMovement = currentMovement;//текущее движение в олд
+                while (sw.ElapsedMilliseconds <= FrameMs)//пока идет 200 мс
                 {
-                    if (currentMovement == oldMovement)
+                    if (currentMovement == oldMovement)//проверка на изменение направления движения
                     {
                         currentMovement = ReadMovementClass.ReadMovement(currentMovement);
                     }
                 }
 
-                if (snake.Head.X == food.X && snake.Head.Y == food.Y)
+                if (snake.Head.X == food.X && snake.Head.Y == food.Y)//если голова и еда встретились 
                 {
-                    snake.Move(currentMovement, true);
+                    snake.Move(currentMovement, true);//продолжаем движение и eat = true
 
-                    food = GenFoodClass.GenFood(snake);
+                    food = GenFoodClass.GenFood(snake);//рисуем новую еду
                     food.Draw();
 
-                    score++;
+                    score++;//увеличиваем счетчик результата
                 }
                 else
                 {
