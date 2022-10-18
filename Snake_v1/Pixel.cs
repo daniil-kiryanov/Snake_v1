@@ -1,42 +1,39 @@
-﻿namespace Snake_v1
+﻿public readonly struct Pixel
 {
-    public readonly struct Pixel
+    //private const char PixelChar = '█';
+    private const char PixelChar = '0';
+    public Pixel(int x, int y, ConsoleColor color, int pixelSize = 3)// size = 3, чтобы видно было
     {
-        //private const char PixelChar = '█';
-        private const char PixelChar = '0';
-        public Pixel(int x, int y, ConsoleColor color, int pixelSize = 3)// size = 3, чтобы видно было
-        {
-            X = x;
-            Y = y;
-            Color = color;
-            PixelSize = pixelSize;
-        }
-        public int X { get; }
-        public int Y { get; }
-        public ConsoleColor Color { get; }
-        public int PixelSize { get; }
+        X = x;
+        Y = y;
+        Color = color;
+        PixelSize = pixelSize;
+    }
+    public int X { get; }
+    public int Y { get; }
+    public ConsoleColor Color { get; }
+    public int PixelSize { get; }
 
-        public void Draw()
+    public void Draw()
+    {
+        Console.ForegroundColor = Color;// pixel color
+        for (int x = 0; x < PixelSize; x++)
         {
-            Console.ForegroundColor = Color;// pixel color
-            for (int x = 0; x < PixelSize; x++)
+            for (int y = 0; y < PixelSize; y++)
             {
-                for (int y = 0; y < PixelSize; y++)
-                {
-                    Console.SetCursorPosition(X * PixelSize + x, Y * PixelSize + y);
-                    Console.Write(PixelChar);
-                }
+                Console.SetCursorPosition(X * PixelSize + x, Y * PixelSize + y);
+                Console.Write(PixelChar);
             }
         }
-        public void Clear()
+    }
+    public void Clear()
+    {
+        for (int x = 0; x < PixelSize; x++)
         {
-            for (int x = 0; x < PixelSize; x++)
+            for (int y = 0; y < PixelSize; y++)
             {
-                for (int y = 0; y < PixelSize; y++)
-                {
-                    Console.SetCursorPosition(X * PixelSize + x, Y * PixelSize + y);
-                    Console.Write(' ');
-                }
+                Console.SetCursorPosition(X * PixelSize + x, Y * PixelSize + y);
+                Console.Write(' ');
             }
         }
     }

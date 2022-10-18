@@ -1,10 +1,7 @@
-﻿namespace Snake_v1
+﻿public enum Direction
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+    Up,
+    Down,
+    Left,
+    Right
 }

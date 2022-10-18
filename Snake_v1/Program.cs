@@ -1,6 +1,4 @@
 ﻿using static System.Console;
-
-namespace Snake_v1;
 class Program
 {
     static void Main()
